@@ -13,19 +13,33 @@ describe('Promise', function(){
   })
 
   describe("#then()", function() {
-    it('asserts true', function() {
-      assert(true)
+
+    it('allows me to register a onFulfilled callback', function(done) {
+      p.then(function(value) {
+        assert(value == 2)
+        done()
+      })
+      p.fulfill(2)
     })
+
+    it('allows me to register a onRejected callback', function(done) {
+      p.then(function(value) {
+        done()
+      }, function(reason) {
+        assert(reason == "nope")
+        done()
+      })
+      p.reject("nope")
+    })
+
+    it('only lets me fulfill a promise once', function(done) {
+      p.fulfill(2)
+      p.fulfill(2)
+      done()
+    })
+
+
+
   })
 
 })
-
-// p.then(function(value) {
-//   return value + 2
-// }, function(reason) {
-//   console.log(reason)
-// }).then(function(value){
-//   console.log(value)
-// })
-
-// p.fulfill(1)
