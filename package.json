@@ -1,0 +1,11 @@
+{
+  "name": "Promise",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "vows --spec --isolate"
+  },
+  "devDependencies": {
+    "mocha": "x.x.x"
+  },
+  "license": "MIT"
+}
