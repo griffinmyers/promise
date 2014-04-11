@@ -1,19 +1,20 @@
 var h = require('../lib/help.js')
+var should = require('should')
 var assert = require('assert')
 
 describe('Help', function(){
 
   describe("#is_function()", function() {
     it('works', function() {
-      assert(!h.is_function(2))
-      assert(h.is_function(function(){}))
+      h.is_function(2).should.be.false
+      h.is_function(function(){}).should.be.true
     })
   })
 
   describe("#is_object()", function() {
     it('works', function() {
-      assert(!h.is_object(2))
-      assert(h.is_object({'hey': 'breh'}))
+      h.is_object(2).should.be.false
+      h.is_object({'hey': 'breh'}).should.be.true
     })
   })
 
@@ -23,7 +24,7 @@ describe('Help', function(){
         return "based god"
       })
 
-      assert(lilb() === "based god")
+      lilb().should.be.exactly("based god")
       assert(lilb() === undefined)
     })
   })
@@ -36,7 +37,7 @@ describe('Help', function(){
         return "pizza pups"
       }])
 
-      assert(funcs[1]() === "pizza pups")
+      funcs[1]().should.be.exactly("pizza pups")
       assert(funcs[0]() === undefined)
       assert(funcs[1]() === undefined)
     })

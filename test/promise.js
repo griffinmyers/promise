@@ -1,5 +1,5 @@
 var P = require('../lib/promise.js')
-var assert = require('assert')
+var assert = require('should')
 
 var p = new P()
 
@@ -16,7 +16,7 @@ describe('Promise', function(){
 
     it('allows me to register a onFulfilled callback', function(done) {
       p.then(function(value) {
-        assert(value == 2)
+        value.should.be.exactly(2)
         done()
       })
       p.fulfill(2)
@@ -26,7 +26,7 @@ describe('Promise', function(){
       p.then(function(value) {
         done()
       }, function(reason) {
-        assert(reason == "nope")
+        reason.should.be.exactly("nope")
         done()
       })
       p.reject("nope")
@@ -34,7 +34,7 @@ describe('Promise', function(){
 
     it('only lets me fulfill a promise once', function(done) {
       p.fulfill(2)
-      p.fulfill(2)
+      (function(){ p.fulfill(2) }).should.throw();
       done()
     })
 
