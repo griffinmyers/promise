@@ -2,7 +2,7 @@
   "name": "Promise",
   "version": "0.0.1",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha --reporter spec test/*.js"
+    "test": "node_modules/mocha/bin/mocha --reporter spec"
   },
   "devDependencies": {
     "mocha": "x.x.x"
