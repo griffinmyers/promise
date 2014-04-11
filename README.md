@@ -1,4 +1,5 @@
 Promise
 =======
 
-An implementation of to [Promises/A+](http://promises-aplus.github.io/promises-spec) spec.
+An implementation of the [Promises/A+](http://promises-aplus.github.io/promises-spec)
+spec.
