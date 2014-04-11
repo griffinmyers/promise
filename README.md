@@ -1,7 +1,7 @@
 Promise
 =======
 
-An implementation of the [Promises/A+](http://promises-aplus.github.io/promises-spec)
+An implementation of the [Promises/A+](https://github.com/promises-aplus/promises-spec/blob/master/README.md)
 spec.
 
 Testing
