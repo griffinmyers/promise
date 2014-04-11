@@ -7,4 +7,5 @@ spec.
 Testing
 -------
 
+    npm install
     npm test

@@ -5,7 +5,8 @@
     "test": "node_modules/mocha/bin/mocha --reporter spec"
   },
   "devDependencies": {
-    "mocha": "x.x.x"
+    "mocha": "1.18.2",
+    "should": "3.3.0"
   },
   "license": "MIT"
 }
