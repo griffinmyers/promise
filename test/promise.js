@@ -38,8 +38,6 @@ describe('Promise', function(){
       done()
     })
 
-
-
   })
 
 })
