@@ -14,7 +14,7 @@ describe('Promise', function(){
 
   describe("#then()", function() {
 
-    it('allows me to register a onFulfilled callback', function(done) {
+    it('allows me to register an onFulfilled callback', function(done) {
       p.then(function(value) {
         value.should.be.exactly(2)
         done()
