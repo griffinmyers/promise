@@ -19,6 +19,7 @@ describe('Promise', function(){
         value.should.be.exactly(2)
         done()
       })
+
       p.fulfill(2)
     })
 
@@ -29,16 +30,17 @@ describe('Promise', function(){
         reason.should.be.exactly("nope")
         done()
       })
+
       p.reject("nope")
     })
 
     it('allows me to only register an onRejected callback', function(done) {
       p.then(null, function(reason){
         reason.should.be.exactly("nope")
+        done()
       })
 
       p.reject("nope")
-      done()
     })
 
     it('allows me to return from onFulfilled and propgate a value', function(done) {
@@ -48,10 +50,10 @@ describe('Promise', function(){
         return value + 3
       }).then(function(value) {
         value.should.be.exactly(5)
+        done()
       })
 
       p.fulfill(1)
-      done()
     })
 
     it('allows me to throw from onRejected and propgate a reason', function(done) {
@@ -61,10 +63,10 @@ describe('Promise', function(){
         throw "ridin' big, " + reason
       }).then(null, function(reason) {
         reason.should.be.exactly("ridin' big, gettin' mine two microwaves I cook a brick at a time")
+        done()
       })
 
       p.reject("two microwaves I cook a brick at a time")
-      done()
     })
 
     it('only lets me fulfill a promise once', function(done) {
@@ -74,7 +76,6 @@ describe('Promise', function(){
       p.value.should.be.exactly(2)
       done()
     })
-
 
   })
 
