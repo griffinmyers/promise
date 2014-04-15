@@ -161,7 +161,7 @@ describe('Promise', function(){
 
     })
 
-    it.only('should adopt promise state', function(done) {
+    it('should adopt promise state for fulfilling', function(done) {
 
       var pone = new P()
       var ptwo = new P()
@@ -169,13 +169,29 @@ describe('Promise', function(){
       pone.then(function(value) {
         return ptwo
       }).then(function(value) {
-        console.log(value)
         value.should.be.exactly(20)
         done()
       })
 
       pone.fulfill(10)
       ptwo.fulfill(20)
+
+    })
+
+    it('should adopt promise state for rejecting', function(done) {
+
+      var pone = new P()
+      var ptwo = new P()
+
+      pone.then(function(value) {
+        return ptwo
+      }).then(null, function(reason) {
+        reason.should.be.exactly(20)
+        done()
+      })
+
+      pone.fulfill(10)
+      ptwo.reject(20)
 
     })
 
