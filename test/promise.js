@@ -234,6 +234,42 @@ describe('Promise', function(){
 
     })
 
+    it.only('should reject if then throws', function(done) {
+
+      p.then(function(value){
+        return {
+          "then": function(resolve, reject) {
+            throw "F*CK"
+            resolve(value * 4)
+          }
+        }
+      }).then(null, function(reason) {
+        reason.should.be.exactly("F*CK")
+        done()
+      })
+
+      p.fulfill(10)
+
+    })
+
+    it('should ignore throws after resolving', function(done) {
+
+      p.then(function(value){
+        return {
+          "then": function(resolve, reject) {
+            resolve(value * 4)
+            throw "F*CK"
+          }
+        }
+      }).then(function(value) {
+        value.should.be.exactly(40)
+        done()
+      })
+
+      p.fulfill(10)
+
+    })
+
   })
 
 })
