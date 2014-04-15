@@ -22,9 +22,7 @@ describe('Promise', function(){
     })
 
     it('allows me to register an onRejected callback', function(done) {
-      p.then(function(value) {
-        done()
-      }, function(reason) {
+      p.then(function(){}, function(reason) {
         reason.should.be.exactly("nope")
         done()
       })
