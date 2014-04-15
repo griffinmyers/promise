@@ -111,17 +111,27 @@ describe('Promise', function(){
 
     })
 
-    it('should resolve promises returned by then if immediate values', function(done) {
+    it('should resolve promises returned by then given immediate values', function(done) {
 
       p.then(2).then(function(value) {
         value.should.be.exactly(2)
         done()
       })
 
-      p.fulfill(2)
+      p.fulfill(10)
 
     })
 
+    it('should reject promises returned by then given immediate values', function(done) {
+
+      p.then(null, 2).then(null, function(reason) {
+        reason.should.be.exactly(2)
+        done()
+      })
+
+      p.reject(10)
+
+    })
 
   })
 
