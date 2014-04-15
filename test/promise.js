@@ -283,6 +283,28 @@ describe('Promise', function(){
 
     })
 
+    it('lets me then a fulfilled promise', function(done) {
+
+      p.fulfill(10)
+
+      p.then(function(value){
+        value.should.be.exactly(10)
+        done()
+      })
+
+    })
+
+    it('lets me then a rejected promise', function(done) {
+
+      p.reject(10)
+
+      p.then(null, function(reason){
+        reason.should.be.exactly(10)
+        done()
+      })
+
+    })
+
   })
 
 })
