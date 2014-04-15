@@ -77,6 +77,42 @@ describe('Promise', function(){
       done()
     })
 
+    it('allows me to register multiple resolve callbacks', function(done) {
+
+      var made_it = false
+
+      p.then(function(value) {
+        made_it = true
+      })
+
+      p.then(function(value) {
+        made_it.should.be.true
+        done()
+      })
+
+      p.fulfill(2)
+
+    })
+
+    it('allows me to register multiple reject callbacks', function(done) {
+
+      var made_it = false
+
+      p.then(null, function(reason) {
+        made_it = true
+      })
+
+      p.then(null, function(reason) {
+        made_it.should.be.true
+        done()
+      })
+
+      p.reject(2)
+
+    })
+
+
+
   })
 
 })
