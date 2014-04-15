@@ -133,6 +133,21 @@ describe('Promise', function(){
 
     })
 
+    it('should let me propgate errors', function(done) {
+
+      p.then(function(value) {
+        return value
+      }).then(function(value) {
+        throw value
+      }).then(null, function(reason) {
+        reason.should.be.exactly(10)
+        done()
+      })
+
+      p.fulfill(10)
+
+    })
+
   })
 
 })
