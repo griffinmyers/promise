@@ -43,7 +43,7 @@ describe('Promise', function(){
       p.reject("nope")
     })
 
-    it('allows me to return from onFulfilled and propgate a value', function(done) {
+    it('allows me to return from onFulfilled and propagate a value', function(done) {
       p.then(function(value) {
         return value * 2
       }).then(function(value) {
@@ -56,7 +56,7 @@ describe('Promise', function(){
       p.fulfill(1)
     })
 
-    it('allows me to throw from onRejected and propgate a reason', function(done) {
+    it('allows me to throw from onRejected and propagate a reason', function(done) {
       p.then(null, function(reason) {
         throw "gettin' mine " + reason
       }).then(null, function(reason) {
@@ -133,7 +133,7 @@ describe('Promise', function(){
 
     })
 
-    it('should let me propgate errors', function(done) {
+    it('should let me propagate errors', function(done) {
 
       p.then(function(value) {
         throw value
@@ -162,6 +162,19 @@ describe('Promise', function(){
       p.fulfill(10)
 
     })
+
+    // it('should adopt promise state', function(done) {
+
+    //   p1 = new P()
+    //   p2 = new p()
+
+    //   p1.then(function(value) {
+    //     return p2
+    //   })
+
+    //   p.fulfill(10)
+
+    // })
 
   })
 

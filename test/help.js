@@ -32,7 +32,7 @@ describe('Help', function(){
   describe("#any_once()", function() {
     it('allows me to call any function only once', function() {
       var funcs = h.any_once([function() {
-        return "flosstadams"
+        return "flosstradamus"
       }, function() {
         return "pizza pups"
       }])
