@@ -1,8 +1,6 @@
 var P = require('../lib/promise.js')
 var assert = require('should')
 
-var p = new P()
-
 describe('Promise', function(){
 
   var p;
@@ -163,18 +161,23 @@ describe('Promise', function(){
 
     })
 
-    // it('should adopt promise state', function(done) {
+    it.only('should adopt promise state', function(done) {
 
-    //   p1 = new P()
-    //   p2 = new p()
+      var pone = new P()
+      var ptwo = new P()
 
-    //   p1.then(function(value) {
-    //     return p2
-    //   })
+      pone.then(function(value) {
+        return ptwo
+      }).then(function(value) {
+        console.log(value)
+        value.should.be.exactly(20)
+        done()
+      })
 
-    //   p.fulfill(10)
+      pone.fulfill(10)
+      ptwo.fulfill(20)
 
-    // })
+    })
 
   })
 
