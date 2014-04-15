@@ -234,7 +234,7 @@ describe('Promise', function(){
 
     })
 
-    it.only('should reject if then throws', function(done) {
+    it('should reject if then throws', function(done) {
 
       p.then(function(value){
         return {
@@ -263,6 +263,21 @@ describe('Promise', function(){
         }
       }).then(function(value) {
         value.should.be.exactly(40)
+        done()
+      })
+
+      p.fulfill(10)
+
+    })
+
+    it('should conform to kinda a goofy spec', function(done) {
+
+      p.then(function(value){
+        return {
+          "then": "wat"
+        }
+      }).then(function(value) {
+        value.should.be.exactly("wat")
         done()
       })
 
