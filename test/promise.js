@@ -114,7 +114,6 @@ describe('Promise', function(){
     it('should resolve promises returned by then if immediate values', function(done) {
 
       p.then(2).then(function(value) {
-        console.log(value)
         value.should.be.exactly(2)
         done()
       })
