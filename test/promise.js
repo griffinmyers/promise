@@ -136,11 +136,26 @@ describe('Promise', function(){
     it('should let me propgate errors', function(done) {
 
       p.then(function(value) {
-        return value
+        throw value
       }).then(function(value) {
+        return value
+      }).then(null, function(reason) {
+        assert(reason === undefined)
+        done()
+      })
+
+      p.fulfill(10)
+
+    })
+
+    it('should let me catch errors', function(done) {
+
+      p.then(function(value) {
         throw value
       }).then(null, function(reason) {
-        reason.should.be.exactly(10)
+        return reason
+      }).then(function(value) {
+        value.should.be.exactly(10)
         done()
       })
 
