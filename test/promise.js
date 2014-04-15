@@ -195,6 +195,26 @@ describe('Promise', function(){
 
     })
 
+
+    it('should resolve with thenables', function(done) {
+
+      p.then(function(value){
+        return {
+          "then": function(resolve, reject) {
+            resolve(value * 2)
+            resolve(value * 3)
+            reject(value * 4)
+          }
+        }
+      }).then(function(value) {
+        value.should.be.exactly(20)
+        done()
+      })
+
+      p.fulfill(10)
+
+    })
+
   })
 
 })
