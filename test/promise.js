@@ -286,23 +286,29 @@ describe('Promise', function(){
     it('lets me then a fulfilled promise', function(done) {
 
       p.fulfill(10)
+      var on_nexttick = false
 
       p.then(function(value){
         value.should.be.exactly(10)
+        on_nexttick.should.be.true
         done()
       })
 
+      on_nexttick = true
     })
 
     it('lets me then a rejected promise', function(done) {
 
       p.reject(10)
+      var on_nexttick = false
 
       p.then(null, function(reason){
         reason.should.be.exactly(10)
+        on_nexttick.should.be.true
         done()
       })
 
+      on_nexttick = true
     })
 
   })
